@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 import android.os.Bundle;
+import android.content.Intent;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -44,4 +45,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void onClick(View view) {
+        Intent intent = new Intent(this, SecondActivity.class);
+        startActivity(intent);
+    }
 }
