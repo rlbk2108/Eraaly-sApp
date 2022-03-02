@@ -7,18 +7,6 @@
     tools:context=".SecondActivity">
 
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/ic_baseline_arrow"
-        android:onClick="getBack"
-        android:translationZ="40dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/circleImageView"
         android:layout_width="120dp"
@@ -28,6 +16,70 @@
         android:layout_marginEnd="8dp"
         android:src="@drawable/my_photo"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="110dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginBottom="140dp"
+        android:text="Web"
+        android:textSize="18sp"
+        android:onClick="webView"
+        app:icon="@drawable/ic_baseline_world"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="110dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="140dp"
+        android:text="Map"
+        android:textSize="18sp"
+        android:onClick="mapView"
+        app:icon="@drawable/ic_baseline_location"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button6"
+        app:layout_constraintStart_toEndOf="@+id/button4" />
+
+    <Button
+        android:id="@+id/button6"
+        android:layout_width="110dp"
+        android:layout_height="70dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="140dp"
+        android:text="Call me"
+        android:textSize="16sp"
+        android:onClick="callMe"
+        app:icon="@drawable/ic_baseline_local_phone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:onClick="getBack"
+        android:outlineSpotShadowColor="@color/dark_coral"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_arrow" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="160dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="40dp"
+        android:text="Here is your message"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

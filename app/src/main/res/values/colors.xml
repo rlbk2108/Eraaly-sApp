@@ -13,4 +13,5 @@
     <color name="dark_coral">#FF3111</color>
     <color name="Snowflake">#C4CCD6</color>
     <color name="Chrome">#9D9EA0</color>
+    <color name="transparent">#00FFFFFF</color>
 </resources>

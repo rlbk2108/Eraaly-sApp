@@ -29,21 +29,38 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="228dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="96dp"
         android:text="IT-120"
         android:textColor="@color/black"
         android:textSize="40sp"
         android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.41"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="340dp"
+        android:contentDescription="@string/app_name"
+        android:hapticFeedbackEnabled="true"
+        android:onClick="onMyButtonClick"
+        android:text="Eraaly"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
         tools:ignore="HardcodedText" />
 
     <ImageButton
         android:id="@+id/imageButton1"
         android:layout_width="210dp"
         android:layout_height="212dp"
-        android:layout_marginBottom="56dp"
+        android:layout_marginBottom="60dp"
         android:background="@drawable/change_color"
         android:contentDescription="TODO"
         android:elevation="6dp"
@@ -58,20 +75,34 @@
         app:srcCompat="@drawable/iuca_logo"
         tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
-    <Button
-        android:id="@+id/button1"
+    <EditText
+        android:id="@+id/editTextTextPersonName"
+        android:layout_width="210dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginBottom="72dp"
+        android:ems="10"
+        android:hint="Type the message"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/imageButton2"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/imageButton3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="208dp"
-        android:contentDescription="@string/app_name"
-        android:hapticFeedbackEnabled="true"
-        android:onClick="onMyButtonClick"
-        android:text="Eraaly"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="HardcodedText" />
+        android:layout_marginStart="5dp"
+        android:layout_marginBottom="72dp"
+        android:onClick="Send"
+        app:layout_constraintBottom_toTopOf="@+id/imageButton2"
+        app:layout_constraintStart_toEndOf="@+id/editTextTextPersonName"
+        app:srcCompat="@drawable/ic_baseline_send" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/group2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="imageButton3,editTextTextPersonName" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

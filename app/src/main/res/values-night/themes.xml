@@ -12,7 +12,7 @@
         <item name="colorOnBackground">@color/light_black</item>
         <!-- Status bar color. -->
         <item name="android:colorBackground" tools:targetApi="l">?attr/colorOnBackground</item>
-        <item name="android:statusBarColor">?attr/colorOnBackground</item>
+        <item name="android:statusBarColor">@color/transparent</item>
         <!-- Customize your theme here. -->
     </style>
 </resources>

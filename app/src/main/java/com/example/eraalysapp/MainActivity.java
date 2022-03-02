@@ -1,17 +1,14 @@
 package com.example.eraalysapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
-import android.os.Bundle;
-import android.content.Intent;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,12 +16,19 @@ public class MainActivity extends AppCompatActivity {
     CharSequence buttonText;
     ImageButton myImageButton;
 
+    private EditText mName;
+    private ImageButton mGo;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        mName=findViewById(R.id.editTextTextPersonName);
+        mGo=findViewById(R.id.imageButton3);
     }
+
+    
 
 
     public void onMyButtonClick(View view) {
@@ -51,5 +55,18 @@ public class MainActivity extends AppCompatActivity {
     public void onClick(View view) {
         Intent intent = new Intent(this, SecondActivity.class);
         startActivity(intent);
+    }
+
+    public void Send(View view) {
+        switch (view.getId()) {
+            case R.id.imageButton3:
+                Intent intent = new Intent(this, SecondActivity.class);
+                //Создаем данные для передачи:
+                intent.putExtra("name", mName.getText().toString());
+                //Запускаем переход:
+                startActivity(intent);
+                break;
+            default: break;
+        }
     }
 }
