@@ -12,7 +12,12 @@
         <item name="colorOnContainer">@color/transparent</item>
         <!-- Status bar color. -->
         <item name="android:colorBackground">?attr/colorOnPrimary</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowLightStatusBar">true</item>
         <item name="android:statusBarColor">@color/transparent</item>
         <!-- Customize your theme here. -->
+    </style>
+    <style name="Widget.AppCompat.Toolbar" parent="Widget.AppCompat.Toolbar.Button.Navigation">
+
     </style>
 </resources>

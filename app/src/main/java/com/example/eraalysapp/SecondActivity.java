@@ -48,4 +48,9 @@ public class SecondActivity extends AppCompatActivity {
         Intent callIntent = new Intent(Intent.ACTION_DIAL, Uri.parse(number));
         startActivity(callIntent);
     }
+
+    public void ListOfStudents(View view) {
+        Intent intent = new Intent(this, StudentActivity.class);
+        startActivity(intent);
+    }
 }
