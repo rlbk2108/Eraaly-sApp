@@ -2,6 +2,7 @@ package com.example.eraalysapp;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -11,6 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StudentActivity extends AppCompatActivity {
+
+    RVadapter rAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,11 +47,14 @@ public class StudentActivity extends AppCompatActivity {
         rv.setLayoutManager(new LinearLayoutManager(this));
         rv.setAdapter(new RVadapter(getApplicationContext(), students));
 
+        TextView countPlace = findViewById(R.id.textView3);
+        int count = students.size();
+        countPlace.setText(Integer.toString(count));
+
     }
 
     public void getBack(View view) {
         onBackPressed();
     }
-
 
 }
