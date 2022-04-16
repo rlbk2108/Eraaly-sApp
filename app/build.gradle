@@ -56,9 +56,9 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'androidx.mediarouter:mediarouter:1.2.6'
     implementation 'com.google.android.gms:play-services-maps:18.0.2'
-    implementation 'com.google.android.libraries.places:places:2.5.0'
+    implementation 'com.google.android.libraries.places:places:2.6.0'
     implementation 'com.android.support:cardview-v7:28.0.0'
-    implementation 'com.google.firebase:firebase-database:20.0.0'
+    implementation 'com.google.firebase:firebase-database:20.0.4'
     gmsImplementation 'com.google.android.gms:play-services-maps:18.0.2'
     gmsImplementation 'com.google.maps.android:android-maps-utils:2.2.6'
     testImplementation 'junit:junit:4.13.2'
@@ -67,14 +67,14 @@ dependencies {
     implementation "androidx.cardview:cardview:1.0.0"
 
     // CameraX core library using the camera2 implementation
-    def camerax_version = "1.1.0-alpha08"
+    def camerax_version = "1.1.0-beta03"
     // The following line is optional, as the core library is included indirectly by camera-camera2
-    implementation "androidx.camera:camera-core:${camerax_version}"
-    implementation "androidx.camera:camera-camera2:${camerax_version}"
+    implementation "androidx.camera:camera-core:1.1.0-beta03"
+    implementation "androidx.camera:camera-camera2:1.1.0-beta03"
     // If you want to additionally use the CameraX Lifecycle library
-    implementation "androidx.camera:camera-lifecycle:${camerax_version}"
+    implementation "androidx.camera:camera-lifecycle:1.1.0-beta03"
     // If you want to additionally use the CameraX View class
-    implementation "androidx.camera:camera-view:1.0.0-alpha14"
+    implementation "androidx.camera:camera-view:1.1.0-beta03"
     // If you want to additionally use the CameraX Extensions library
-    implementation "androidx.camera:camera-extensions:1.0.0-alpha14"
+    implementation "androidx.camera:camera-extensions:1.1.0-beta03"
 }
