@@ -2,47 +2,37 @@ package com.example.eraalysapp;
 
 import static android.Manifest.permission.RECORD_AUDIO;
 import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
-import static android.os.Looper.prepare;
 
-import android.Manifest;
-import android.content.Context;
-import android.content.ContextWrapper;
+import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.hardware.camera2.CameraManager;
+import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
 import android.net.Uri;
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.MediaController;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.camera.lifecycle.ProcessCameraProvider;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.common.util.concurrent.ListenableFuture;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Random;
 
@@ -60,7 +50,7 @@ public class MainActivity extends AppCompatActivity{
     Random random;
     ImageView imagePreview;
     VideoView videoPreview;
-    MediaRecorder myAudioRecorder;
+    MediaRecorder myAudioRecorder = new MediaRecorder();
     MediaPlayer mediaPlayer;
     private FloatingActionButton floatingActionButton1,
             floatingActionButton2,
@@ -70,7 +60,8 @@ public class MainActivity extends AppCompatActivity{
             stopRecord,
             playRecorded;
     private ImageButton imageButton, videoClose;
-    private Button save, get, delete;
+    private Button save, get;
+    private ImageButton delete;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,10 +82,20 @@ public class MainActivity extends AppCompatActivity{
         stopRecord = findViewById(R.id.stop);
         playRecorded = findViewById(R.id.play);
         clearTextField = findViewById(R.id.floatingActionButton2);
+        floatingActionButton1.setColorFilter(Color.argb(255, 255, 255, 255));
+        floatingActionButton2.setColorFilter(Color.argb(255, 255, 255, 255));
+        floatingActionButton3.setColorFilter(Color.argb(255, 255, 255, 255));
+        clearTextField.setColorFilter(Color.argb(255, 140, 140, 140));
+        startRecord.setColorFilter(Color.argb(255, 255, 255, 255));
+        stopRecord.setColorFilter(Color.argb(255, 255, 255, 255));
+        playRecorded.setColorFilter(Color.argb(255, 255, 255, 255));
 
         save = findViewById(R.id.button3);
         get = findViewById(R.id.button7);
         delete = findViewById(R.id.button8);
+        delete.setColorFilter(Color.argb(255, 255, 255, 255));
+
+        save.setAutoSizeTextTypeWithDefaults(TextView.AUTO_SIZE_TEXT_TYPE_UNIFORM);
 
         random = new Random();
 
@@ -106,27 +107,28 @@ public class MainActivity extends AppCompatActivity{
         init();
 
 
+
         startRecord.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            if(checkPermission()) {
-                try {
-                    MediaRecorderReady();
-                    myAudioRecorder.prepare();
+                MediaRecorderReady();
+                if(checkPermission()) {
+                    try {
+                        myAudioRecorder.prepare();
 
-                    Toast.makeText(MainActivity.this, "Recording started",
-                            Toast.LENGTH_LONG).show();
-                    startRecord.setEnabled(false);
-                    stopRecord.setEnabled(true);
-                } catch (IllegalStateException | IOException e) {
-                    e.printStackTrace();
+                        Toast.makeText(MainActivity.this, "Recording started",
+                                Toast.LENGTH_LONG).show();
+                        startRecord.setEnabled(false);
+                        stopRecord.setEnabled(true);
+                    } catch (IllegalStateException | IOException e) {
+                        e.printStackTrace();
+                        }
+                    } else {
+                        requestPermission();
                     }
-                } else {
-                    requestPermission();
+                    myAudioRecorder.start();
                 }
-                myAudioRecorder.start();
-            }
-        });
+            });
 
         stopRecord.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -195,6 +197,9 @@ public class MainActivity extends AppCompatActivity{
             if (resultCode == RESULT_OK) {
                 Bitmap captureImage = (Bitmap) data.getExtras().get("data");
                 imagePreview.setImageBitmap(captureImage);
+                imagePreview.setVisibility(View.VISIBLE);
+                videoClose.setVisibility(View.VISIBLE);
+                hideElements();
                 Toast.makeText(this, "Image taken!", Toast.LENGTH_SHORT).show();
             }
         }
@@ -213,10 +218,9 @@ public class MainActivity extends AppCompatActivity{
         }
     }
 
+
     public void getPicture(View view) {
-        Intent intent = new Intent();
-        intent.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
-        //Запускаем переход с ожиданием обратного результата в виде информации об изображении:
+        Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(intent, Pick_image);
     }
 
@@ -226,19 +230,39 @@ public class MainActivity extends AppCompatActivity{
         startActivityForResult(intent, Pick_video);
     }
 
+    public void hideElements() {
+        floatingActionButton1.setVisibility(View.INVISIBLE);
+        floatingActionButton2.setVisibility(View.INVISIBLE);
+        floatingActionButton3.setVisibility(View.INVISIBLE);
+        imageButton.setVisibility(View.INVISIBLE);
+        save.setVisibility(View.INVISIBLE);
+        get.setVisibility(View.INVISIBLE);
+        delete.setVisibility(View.INVISIBLE);
+        editSave.setVisibility(View.INVISIBLE);
+        clearTextField.setVisibility(View.INVISIBLE);
+    }
 
-    public void closeVideo(View view) {
-        videoPreview.setVisibility(View.INVISIBLE);
+    public void showElements() {
         videoClose.setVisibility(View.INVISIBLE);
         floatingActionButton1.setVisibility(View.VISIBLE);
         floatingActionButton2.setVisibility(View.VISIBLE);
         floatingActionButton3.setVisibility(View.VISIBLE);
         imageButton.setVisibility(View.VISIBLE);
+        save.setVisibility(View.VISIBLE);
+        get.setVisibility(View.VISIBLE);
+        delete.setVisibility(View.VISIBLE);
+        editSave.setVisibility(View.VISIBLE);
+        clearTextField.setVisibility(View.VISIBLE);
+    }
+
+    public void closeVideo(View view) {
+        videoPreview.setVisibility(View.INVISIBLE);
+        imagePreview.setImageDrawable(null);
+        showElements();
     }
 
 
     private void MediaRecorderReady() {
-        myAudioRecorder = new MediaRecorder();
         myAudioRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
         myAudioRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
         myAudioRecorder.setOutputFile(audioFileName);

@@ -93,70 +93,71 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <Button
+    <ImageButton
         android:id="@+id/button8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="40dp"
+        android:layout_width="45dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/coral"
         android:onClick="onClickDelete"
-        android:text="Delete"
-        app:icon="@drawable/ic_baseline_delete"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/button7"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName"
+        app:srcCompat="@drawable/ic_baseline_delete" />
 
     <Button
         android:id="@+id/button7"
-        android:layout_width="wrap_content"
+        android:layout_width="115dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginStart="78dp"
+        android:layout_marginTop="20dp"
         android:onClick="onClickGet"
         android:text="Get"
+        android:textSize="15sp"
+        android:tooltipText="@string/app_name"
         app:icon="@drawable/ic_baseline_get"
-        app:layout_constraintEnd_toStartOf="@+id/button8"
-        app:layout_constraintStart_toEndOf="@+id/button3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
 
     <EditText
         android:id="@+id/editTextTextPersonName"
-        android:layout_width="260dp"
+        android:layout_width="290dp"
         android:layout_height="60dp"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="205dp"
         android:background="@drawable/custom_input_field"
         android:drawablePadding="10dp"
         android:ems="10"
         android:hint="Type your text here"
+        android:importantForAutofill="no"
         android:inputType="textPersonName"
         android:paddingStart="12dp"
         android:paddingEnd="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.516"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imagePreview"
-        android:importantForAutofill="no" />
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
 
     <Button
         android:id="@+id/button3"
-        android:layout_width="wrap_content"
+        android:layout_width="115dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
         android:onClick="onClickSave"
         android:text="Save"
+        android:textSize="15sp"
         app:icon="@drawable/ic_baseline_save"
         app:layout_constraintEnd_toStartOf="@+id/button7"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
 
     <ImageView
         android:id="@+id/imagePreview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_marginTop="5dp"
-        android:scaleType="fitXY"
+        android:scaleType="fitCenter"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
@@ -167,7 +168,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="42dp"
         android:backgroundTint="@color/coral"
         android:clickable="true"
         android:contentDescription="TODO"
@@ -175,14 +176,14 @@
         app:borderWidth="0dp"
         app:layout_constraintEnd_toStartOf="@+id/floatingActionButton3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imagePreview"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
         app:srcCompat="@drawable/ic_menu_camera" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton2"
         android:layout_width="wrap_content"
         android:layout_height="55dp"
-        android:layout_marginStart="201dp"
+        android:layout_marginEnd="4dp"
         android:clickable="true"
         android:elevation="0dp"
         android:onClick="textClear"
@@ -190,7 +191,7 @@
         app:borderWidth="0dp"
         app:elevation="0dp"
         app:layout_constraintBottom_toBottomOf="@+id/editTextTextPersonName"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName"
         app:layout_constraintTop_toTopOf="@+id/editTextTextPersonName"
         app:srcCompat="@drawable/ic_baseline_close" />
 
@@ -198,28 +199,28 @@
         android:id="@+id/floatingActionButton4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="42dp"
         android:layout_marginEnd="50dp"
         android:clickable="true"
         android:onClick="startAudio"
         app:backgroundTint="@color/coral"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/floatingActionButton3"
-        app:layout_constraintTop_toBottomOf="@+id/imagePreview"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
         app:srcCompat="@drawable/ic_baseline_mic_24" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="42dp"
         android:clickable="true"
         android:onClick="getVideo"
         app:backgroundTint="@color/coral"
         app:layout_constraintEnd_toStartOf="@+id/floatingActionButton4"
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toEndOf="@+id/floatingActionButton"
-        app:layout_constraintTop_toBottomOf="@+id/imagePreview"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
         app:srcCompat="@drawable/ic_baseline_video_call_24" />
 
     <VideoView
