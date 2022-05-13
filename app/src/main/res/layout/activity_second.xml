@@ -5,6 +5,58 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SecondActivity">
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:elevation="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="415dp"
+                android:layout_height="60dp"
+                android:background="@color/white"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="?attr/actionBarTheme"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/imageButton5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:backgroundTint="@color/white"
+                android:onClick="getBack"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_baseline_arrow"
+                app:tint="@color/black" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Second Activity"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/toolbar"
+                app:layout_constraintStart_toStartOf="@+id/toolbar"
+                app:layout_constraintTop_toTopOf="@+id/toolbar" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
 
 
     <de.hdodenhof.circleimageview.CircleImageView
@@ -12,11 +64,11 @@
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:layout_centerInParent="true"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
         android:src="@drawable/my_photo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
 
     <Button
         android:id="@+id/button4"
@@ -59,28 +111,29 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:onClick="getBack"
-        android:outlineSpotShadowColor="@color/dark_coral"
+    <Button
+        android:id="@+id/button8"
+        android:layout_width="110dp"
+        android:layout_height="70dp"
+        android:layout_marginBottom="56dp"
+        android:onClick="getTextFromWeb"
+        android:text="Get text"
+        android:textSize="16sp"
+        app:icon="@drawable/custom_text_icon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_baseline_arrow" />
+        app:layout_constraintTop_toBottomOf="@+id/button5" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="160dp"
         android:layout_height="65dp"
         android:layout_marginStart="80dp"
-        android:layout_marginTop="40dp"
         android:text="Here is your message"
         android:textSize="25sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
 
     <Button
         android:id="@+id/button2"

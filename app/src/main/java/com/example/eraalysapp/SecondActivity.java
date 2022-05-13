@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class SecondActivity extends AppCompatActivity {
+    TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +20,7 @@ public class SecondActivity extends AppCompatActivity {
         setContentView(R.layout.activity_second);
 
         TextView textView1 = findViewById(R.id.textView);
+
 
         String Name = getIntent().getStringExtra("name");
         textView1.setText(Name);
@@ -52,5 +54,10 @@ public class SecondActivity extends AppCompatActivity {
     public void ListOfStudents(View view) {
         Intent intent = new Intent(this, StudentActivity.class);
         startActivity(intent);
+    }
+
+    public void getTextFromWeb(View view) {
+        Intent webIntent = new Intent(this, ParsingActivity.class);
+        startActivity(webIntent);
     }
 }
